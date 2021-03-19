@@ -1,0 +1,30 @@
+apiVersion: v2
+publisher: Kogoro
+name: jupyter
+version: latest
+type: Che Editor
+displayName: Jupyter Minimal Notebook
+title: Jupyter Minimal Notebook as Editor for Eclipse Che
+description: Jupyter Minimal Notebook as Editor for Eclipse Che
+icon: https://jupyter.org/assets/main-logo.svg
+category: Editor
+repository: https://github.com/Kogoro/che-editor-jupyter
+firstPublicationDate: "2021-03-19"
+spec:
+  endpoints:
+   -  name: "jupyter"
+      public: true
+      targetPort: 8888
+      attributes:
+        protocol: http
+        type: ide
+  containers:
+   - name: jupyter-notebook
+     image: "kogoro/che-editor-jupyter:latest"
+     env:
+         - name: JUPYTER_NOTEBOOK_DIR
+           value: /projects
+     mountSources: true
+     ports:
+         - exposedPort: 8888
+     memoryLimit: "512M"

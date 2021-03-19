@@ -1,0 +1,12 @@
+apiVersion: 1.0.0
+metadata:
+  generateName: jupyter-
+components:
+  - mountSources: true
+    memoryLimit: 512Mi
+    type: dockerimage
+    image: 'quay.io/eclipse/che-python-3.8@sha256:2f60648c0d84fc803a227d01616e75cac92b73333b70c11912337140a5b516e9'
+    alias: python
+  - type: cheEditor
+    reference: 'https://raw.githubusercontent.com/Kogoro/che-editor-jupyter/master/cheEditor.yaml'
+    alias: jupyter-minimal
